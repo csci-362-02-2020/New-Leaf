@@ -1,5 +1,9 @@
 #! /usr/bin/bash
 
-ls > test.html
+scripts= ls
+echo $scripts
+touch test.html
+echo "<h1>$scripts</h1>" > test.html
 xdg-open test.html
+sleep 5
 rm test.html
