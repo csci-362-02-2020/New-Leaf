@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 
+#
+# myList.py
+# myList
+#
+# New-Leaf
+# lukem1, chris-m-taylor, cafeheart
+# 12 September 2020
+#
+
 from datetime import datetime
 import os
 from subprocess import run
@@ -60,8 +69,11 @@ def buildHTML(lsOut, treeOut):
 	
 def main():
 	print("myList by New-Leaf (python version)")
+	
+	# Run ls command and capture output
 	ls = run(["ls", "-la"], capture_output=True, text=True)
 
+	# Run tree command if available and capture output
 	treeOut = "Install tree for even more information!"
 	try:
 		tree = run(["tree"], capture_output=True, text=True)
