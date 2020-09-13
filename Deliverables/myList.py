@@ -3,9 +3,10 @@
 from datetime import datetime
 import os
 from subprocess import run
+import webbrowser
 
 startTime = datetime.now()
-startDir = os.path.dirname(os.path.realpath(__file__))
+startDir = os.getcwd()
 
 htmlHead = """
 <head>
@@ -54,7 +55,7 @@ def buildHTML(lsOut, treeOut):
 		
 		
 	print("Opening %s..." % tmpFile)
-	run(["xdg-open", tmpFile])
+	webbrowser.open(tmpFile)
 	
 	
 def main():
