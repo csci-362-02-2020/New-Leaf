@@ -87,8 +87,6 @@ def buildHTML(lsOut, treeOut):
 	with open(tmpFile, "w+") as file:
 		file.write(htmlHead)
 		file.write("<body>\n<h1>%s</h1>" % startDir)
-		#file.write("<div class='scripts'>")
-		#TODO: Parse lsOut and create tags for text, buttons
 		ls = lsOut.split("\n")[1:-1]
 		for f in ls:
 			path = "%s/%s" % (startDir, f.split(" ")[-1])
@@ -114,7 +112,7 @@ def main():
 	# Run tree command if available and capture output
 	treeOut = "Install tree for even more information!"
 	try:
-		tree = run(["nmap"], capture_output=True, text=True)
+		tree = run(["tree"], capture_output=True, text=True)
 		treeOut = tree.stdout
 	except FileNotFoundError:
 		print("tree not found, install with: sudo apt install tree")
