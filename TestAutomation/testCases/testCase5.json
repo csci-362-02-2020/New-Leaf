@@ -1,0 +1,9 @@
+{ 
+	“id”: 5,
+	“requirement”: “equality”,
+	“component”: “evalmath”,
+	“method”: “evaluate”
+	“input”: “100 > 10”,
+	“output”: 1
+}
+
