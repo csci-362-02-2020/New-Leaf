@@ -1,7 +1,7 @@
 { 
 	"id": 5,
 	"driver": "testCase5.php",
-	"requirement": "equality",
+	"requirement": "basic equality operator functionality",
 	"component": "evalmath",
 	"method": "evaluate",
 	"input": "100 > 10",

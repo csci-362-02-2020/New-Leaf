@@ -1,10 +1,9 @@
 { 
 	"id": 1,
 	"driver": "testCase1.php",
-	"requirement": "addition",
+	"requirement": "basic addition functionality",
 	"component": "evalmath",
 	"method": "evaluate",
 	"input": "4+5",
 	"output": 9
-}
-
+} 

@@ -1,7 +1,7 @@
 { 
 	"id": 2,
 	"driver": "testCase2.php",
-	"requirement": "subtraction",
+	"requirement": "basic subtraction functionality",
 	"component": "evalmath",
 	"method": "evaluate",
 	"input": "5-6",

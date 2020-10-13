@@ -1,7 +1,7 @@
 { 
 	"id": 3,
 	"driver": "testCase3.php",
-	"requirement": "multiplication",
+	"requirement": "basic multiplication functionality",
 	"component": "evalmath",
 	"method": "evaluate",
 	"input": "5 * 5",

@@ -1,7 +1,7 @@
 { 
 	"id": 4,
 	"driver": "testCase4.php",
-	"requirement": "division",
+	"requirement": "basic division functionality",
 	"component": "evalmath",
 	"method": "e",
 	"input": "25 / 5",
