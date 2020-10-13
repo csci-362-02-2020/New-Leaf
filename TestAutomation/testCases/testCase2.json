@@ -1,9 +1,9 @@
 { 
-	“id”: 2,
-	“requirement”: “subtraction”,
-	“component”: “evalmath”,
-	“method”: “evaluate”,
-	“input”: “5-6”,
-	“output”: -1
+	"id": 2,
+	"requirement": "subtraction",
+	"component": "evalmath",
+	"method": "evaluate",
+	"input": "5-6",
+	"output": -1
 }
 

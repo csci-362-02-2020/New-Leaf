@@ -1,9 +1,9 @@
 { 
-	“id”: 4,
-	“requirement”: “division”,
-	“component”: “evalmath”,
-	“method”: “e”,
-	“input”: “25 / 5”,
-	“output”: 5
+	"id": 4,
+	"requirement": "division",
+	"component": "evalmath",
+	"method": "e",
+	"input": "25 / 5",
+	"output": 5
 }
 

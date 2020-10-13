@@ -1,9 +1,9 @@
 { 
-	“id”: 3,
-	“requirement”: “multiplication”,
-	“component”: “evalmath”,
-	“method”: “evaluate”,
-	“input”: “5 * 5”,
-	“output”: 25
+	"id": 3,
+	"requirement": "multiplication",
+	"component": "evalmath",
+	"method": "evaluate",
+	"input": "5 * 5",
+	"output": 25
 }
 

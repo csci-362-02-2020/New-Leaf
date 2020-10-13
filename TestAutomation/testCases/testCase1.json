@@ -1,9 +1,9 @@
 { 
-	“id”: 1,
-	“requirement”: “addition”,
-	“component”: “evalmath”,
-	“method”: “evaluate”,
-	“input”: “4+5”,
-	“output”: 9
+	"id": 1,
+	"requirement": "addition",
+	"component": "evalmath",
+	"method": "evaluate",
+	"input": "4+5",
+	"output": 9
 }
 
