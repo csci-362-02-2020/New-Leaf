@@ -18,10 +18,10 @@ Thes files shoud be in the following format:
 
 where the fields are defined as follows:
 1. test number or ID
-3. filename of driver found in testCaseExecutables
-2. requirement being tested
-3. component being tested
-4. method being tested
-5. test input(s) including command-line argument(s)
-6. expected outcome(s)
+2. filename of driver found in testCaseExecutables
+3. requirement being tested
+4. component being tested
+5. method being tested
+6. test input(s) including command-line argument(s)
+7. expected outcome(s)
 
