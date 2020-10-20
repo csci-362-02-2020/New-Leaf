@@ -16,6 +16,7 @@ driverDir = "../testCasesExecutables"
 
 import json
 import os
+import subprocess
 
 # Read testDir
 
@@ -37,16 +38,36 @@ testCases = []
 
 for t in testCaseDefs:
 	path = "%s/%s" % (testDir, t)
-	with open(path, "r") as file:
-		testCases.append(json.load(file))
+	with open(path, "r") as file: #using with to avoid closing the file
+		testCases.append(json.load(file)) #json.load(file) turns the file into a dictonary
 		
-# Sort testCases by id number
+# Sort testCases by id number testcases[0]['requirement'] => value of requirement
 testCases = sorted(testCases, key=lambda k: k['id']) 
 
 print("Loaded Test Cases:")
 print(testCases)
 
 # Run testCases, parse and compile results
+
+results = []
+for case in testCases:
+
+	nameOfDriver =  "%s/%s" % (driverDir, case['driver'])
+	testInput = str(case['input'])
+	expectedOutput = str(case['output'])
+	process = ["php", nameOfDriver, testInput, expectedOutput]
+
+	#capture the output
+	capturedOutput = subprocess.run(process, capture_output=True)
+	
+	#append to array
+	results.append(capturedOutput)
+
+print(results)
+
+
+#format results
+
 
 # Put results in html, open in web browser
 
