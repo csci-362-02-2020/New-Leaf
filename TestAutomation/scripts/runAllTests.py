@@ -17,10 +17,9 @@ driverDir = "../testCasesExecutables"
 import json
 import os
 
-# Read testDir, driverDir
+# Read testDir
 
 testCaseDefs = []
-drivers = []
 
 # Find all .json file names in testDir
 for t in os.scandir(testDir):
@@ -31,22 +30,6 @@ for t in os.scandir(testDir):
 			testCaseDefs.append(name)
 	except:
 		pass
-			
-print("Found testCases:")
-print(testCaseDefs)
-
-# Find all .php file names in driverDir
-for e in os.scandir(driverDir):
-	name = e.name
-	try:
-		split = name.split('.')
-		if len(split) == 2 and split[1] == "php":
-			drivers.append(name)
-	except:
-		pass
-
-print("Found Drivers:")
-print(drivers)
 
 # Load testcases
 
