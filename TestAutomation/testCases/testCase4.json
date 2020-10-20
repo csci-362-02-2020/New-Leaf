@@ -1,10 +1,10 @@
 { 
 	"id": 4,
-	"driver": "testCase4.php",
+	"driver": "evalmathDriver.php",
 	"requirement": "basic division functionality",
 	"component": "evalmath",
-	"method": "e",
-	"input": "25 / 5",
+	"method": "evaluate",
+	"input": "25/5",
 	"output": 5
 }
 

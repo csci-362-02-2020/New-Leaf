@@ -1,10 +1,10 @@
 { 
 	"id": 5,
-	"driver": "testCase5.php",
+	"driver": "evalmathDriver.php",
 	"requirement": "basic equality operator functionality",
 	"component": "evalmath",
 	"method": "evaluate",
-	"input": "100 > 10",
+	"input": "100>10",
 	"output": 1
 }
 
