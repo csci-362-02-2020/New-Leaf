@@ -11,19 +11,19 @@
 
 # TODO: Script and drivers are currently designed to run with the TestAutomation dir in the moodle project's root directory
 
-testsDir = "../testCases"
-exesDir = "../testCasesExecutables"
+testDir = "../testCases"
+driverDir = "../testCasesExecutables"
 
 import json
 import os
 
-# Read testCases, exes Dirs
+# Read testDir, driverDir
 
 testCaseDefs = []
-exes = []
+drivers = []
 
-# Find all .json file names in testsDir
-for t in os.scandir(testsDir):
+# Find all .json file names in testDir
+for t in os.scandir(testDir):
 	name = t.name
 	try:
 		split = name.split('.')
@@ -35,25 +35,25 @@ for t in os.scandir(testsDir):
 print("Found testCases:")
 print(testCaseDefs)
 
-# Find all .php file namess in exesDir
-for e in os.scandir(exesDir):
+# Find all .php file names in driverDir
+for e in os.scandir(driverDir):
 	name = e.name
 	try:
 		split = name.split('.')
 		if len(split) == 2 and split[1] == "php":
-			exes.append(name)
+			drivers.append(name)
 	except:
 		pass
 
 print("Found Drivers:")
-print(exes)
+print(drivers)
 
 # Load testcases
 
 testCases = []
 
 for t in testCaseDefs:
-	path = "%s/%s" % (testsDir, t)
+	path = "%s/%s" % (testDir, t)
 	with open(path, "r") as file:
 		testCases.append(json.load(file))
 		
