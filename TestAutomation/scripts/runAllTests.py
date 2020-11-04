@@ -133,6 +133,17 @@ htmlHead = """
 		margin: 30px 5px;
 		border: 2px solid black;
 	}
+	
+	.pass
+	{
+		text-decoration: underline;
+		text-decoration-color: green;
+	}
+	.fail
+	{
+		text-decoration: underline;
+		text-decoration-color: red;
+	}
     
   </style>
 </head>
@@ -153,10 +164,14 @@ with open(tmpFile, "w+") as file:
 		file.write("<div class='container'>")
 		#split each result into array
 		resultAry = result.split("\n")
-		file.write("<h2>%s</h2>" % resultAry[0])
-		file.write("<p>%s</p>" % resultAry[1])
-		file.write("<p>%s</p>" % resultAry[2])
-		file.write("<p>%s</p>" % resultAry[3])
+		file.write("<h2>%s</h2>" % resultAry[0]) # class name
+		file.write("<p>%s</p>" % resultAry[1]) # Input
+		file.write("<p>%s</p>" % resultAry[2]) # expected output
+		print((result.split(" "))[-1])
+		if (( (result.split(" "))[-1]) == "Passed.\n"):
+			file.write('<p class="pass">%s</p>' % resultAry[3]) # actual output/test passed or failed
+		else:
+			file.write('<p class="fail">%s</p>' % resultAry[3])
 		file.write("</div>")
 	file.write(htmlClosing)
 	
