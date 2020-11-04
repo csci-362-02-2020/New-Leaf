@@ -17,6 +17,7 @@ driverDir = "../testCasesExecutables"
 import json
 import os
 import subprocess
+import webbrowser
 
 # Read testDir
 
@@ -45,7 +46,7 @@ for t in testCaseDefs:
 testCases = sorted(testCases, key=lambda k: k['id']) 
 
 print("Loaded Test Cases:")
-print(testCases)
+#print(testCases)
 
 # Run testCases, parse and compile results
 
@@ -63,13 +64,94 @@ for case in testCases:
 	#append to array
 	results.append(capturedOutput)
 
-print(results)
-
 
 #format results
+formattedResults = []
+
+for result in results:
+	formattedResults.append((result.stdout).decode("utf-8"))
+
+print(formattedResults)
 
 
 # Put results in html, open in web browser
+htmlHead = """
+<head>
+<title>Current Directory</title>
+  <style>
+  
+	body {   
+		background-color: rgb(150, 108, 39);
+	}
+    
+	h1 {
+		display: flex;
+		justify-content: center;
+		color: rgb(255, 200, 53);
+	}
+    
+	.scripts {
+		display: flex;
+		justify-content: center;
+		color: rgb(243, 242, 236);
+	}
+    
+	p {
+		display: flex;
+		text-align: left;
+		justify-content: center;
+	}
+    
+    .button
+	{
+		border: none;
+		border-radius: 12px;
+		color: white;
+		padding: 8px 16px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 12px;
+	}
+	.button:hover
+	{
+		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+	.wrapper
+	{
+		padding-bottom: 10px;
+		text-align: center;
+		justify-content: center;
+	}
+    
+  </style>
+</head>
+"""
+
+htmlClosing = '''
+</body> 
+</html>'''
+
+#create a temp file
+tmpFile = "/tmp/newleaf-runAllTests.html"
+
+with open(tmpFile, "w+") as file:
+	file.write(htmlHead)
+	
+	#iterate through each test case
+	for result in formattedResults:
+		file.write(result)
+	file.write(htmlClosing)
+	
+webbrowser.open(tmpFile)
+
+
+
+
+
+
+
+
 
 
 
