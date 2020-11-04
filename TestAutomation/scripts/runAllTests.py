@@ -72,8 +72,6 @@ for result in results:
 	formattedResults.append((result.stdout).decode("utf-8"))
 
 print(formattedResults)
-
-
 # Put results in html, open in web browser
 htmlHead = """
 <head>
@@ -101,6 +99,12 @@ htmlHead = """
 		text-align: left;
 		justify-content: center;
 	}
+	
+	h2 {
+		display: flex;
+		text-align: left;
+		justify-content: center;
+	}
     
     .button
 	{
@@ -123,6 +127,12 @@ htmlHead = """
 		text-align: center;
 		justify-content: center;
 	}
+	
+	.container
+	{
+		margin: 30px 5px;
+		border: 2px solid black;
+	}
     
   </style>
 </head>
@@ -140,7 +150,14 @@ with open(tmpFile, "w+") as file:
 	
 	#iterate through each test case
 	for result in formattedResults:
-		file.write(result)
+		file.write("<div class='container'>")
+		#split each result into array
+		resultAry = result.split("\n")
+		file.write("<h2>%s</h2>" % resultAry[0])
+		file.write("<p>%s</p>" % resultAry[1])
+		file.write("<p>%s</p>" % resultAry[2])
+		file.write("<p>%s</p>" % resultAry[3])
+		file.write("</div>")
 	file.write(htmlClosing)
 	
 webbrowser.open(tmpFile)
