@@ -158,10 +158,10 @@ with open(tmpFile, "w+") as file:
 		file.write("<div class='container'>")
 		#split each result into array
 		resultAry = result[1:-2].split(", ")
-		file.write("<h2>Component: %s</h2>" % resultAry[0]) # class name
-		file.write("<p>Input: %s</p>" % resultAry[1]) # Input
-		file.write("<p>Expected Output: %s</p>" % resultAry[2]) # expected output
-		file.write('<p class="%s">Result: %s -> %s</p>' % (resultAry[4].lower(), resultAry[3], resultAry[4])) # actual output/test passed or failed
+		file.write("<h2>Test Case: %d   |   %s->%s</h2>" % (case['id'], case['component'], case['method'])) # class name
+		file.write("<p>Input: %s</p>" % case['input']) # Input
+		file.write("<p>Expected Output: %s</p>" % case['output']) # expected output
+		file.write('<p class="%s">Result: %s -> %s</p>' % (resultAry[1].lower(), resultAry[0], resultAry[1])) # actual output/test passed or failed
 		file.write("</div>")
 	file.write(htmlClosing)
 	

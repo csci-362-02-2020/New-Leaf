@@ -23,7 +23,7 @@ if (!(sizeof($argv) == 3)) {
 
 
 // Method to perform a test
-// Echos: {module, input, expected, result, status}
+// Echos: {result, status}
 function test($input, $expected) {
 	//echo "Running evalmath Test \n";
 	//echo "Input: " . $input . "\n";
@@ -41,7 +41,7 @@ function test($input, $expected) {
 		//echo "Test Failed.\n";
 		$status = "Fail";
 	}
-	echo "{" . "evalmath" . ", " . $input . ", " . $expected . ", " . $result . ", " . $status . "}\n";
+	echo "{" . $result . ", " . $status . "}\n";
 }
 
 

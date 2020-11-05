@@ -30,7 +30,7 @@ function test($input, $expected) {
 	//echo "Expected Output: " . $expected . "\n";
 	
 	$html = new Html2Text\Html2Text(base64_decode($input));
-	$result = base64_encode($html->get_text());
+	$result = base64_encode($html->getText());
 	//echo "Result: " . $result;
 	//echo $input . " = " . $expected . " -> ";
 	if ($result == $expected) {
