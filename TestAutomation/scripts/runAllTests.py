@@ -45,12 +45,11 @@ for t in testCaseDefs:
 # Sort testCases by id number testcases[0]['requirement'] => value of requirement
 testCases = sorted(testCases, key=lambda k: k['id']) 
 
-print("Loaded Test Cases:")
+print("Loaded Test Cases")
 #print(testCases)
 
 # Run testCases, parse and compile results
 
-results = []
 for case in testCases:
 
 	nameOfDriver =  "%s/%s" % (driverDir, case['driver'])
@@ -61,17 +60,11 @@ for case in testCases:
 	#capture the output
 	capturedOutput = subprocess.run(process, capture_output=True)
 	
-	#append to array
-	results.append(capturedOutput)
+	#add to case dict
+	case['results'] = capturedOutput.stdout.decode("utf-8")
 
 
-#format results
-formattedResults = []
-
-for result in results:
-	formattedResults.append((result.stdout).decode("utf-8"))
-
-print(formattedResults)
+	
 # Put results in html, open in web browser
 htmlHead = """
 <head>
@@ -160,18 +153,15 @@ with open(tmpFile, "w+") as file:
 	file.write(htmlHead)
 	
 	#iterate through each test case
-	for result in formattedResults:
+	for case in testCases:
+		result = case['results']
 		file.write("<div class='container'>")
 		#split each result into array
-		resultAry = result.split("\n")
+		resultAry = result[1:-2].split(", ")
 		file.write("<h2>%s</h2>" % resultAry[0]) # class name
 		file.write("<p>%s</p>" % resultAry[1]) # Input
 		file.write("<p>%s</p>" % resultAry[2]) # expected output
-		print((result.split(" "))[-1])
-		if (( (result.split(" "))[-1]) == "Passed.\n"):
-			file.write('<p class="pass">%s</p>' % resultAry[3]) # actual output/test passed or failed
-		else:
-			file.write('<p class="fail">%s</p>' % resultAry[3])
+		file.write('<p class="%s">%s</p>' % (resultAry[4].lower(), resultAry[4])) # actual output/test passed or failed
 		file.write("</div>")
 	file.write(htmlClosing)
 	

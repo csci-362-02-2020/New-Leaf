@@ -23,22 +23,25 @@ if (!(sizeof($argv) == 3)) {
 
 
 // Method to perform a test
-// Note: Output here should be parseable, may need to be changed
+// Echos: {module, input, expected, result, status}
 function test($input, $expected) {
-	echo "Running evalmath Test \n";
-	echo "Input: " . $input . "\n";
-	echo "Expected Output: " . $expected . "\n";
+	//echo "Running evalmath Test \n";
+	//echo "Input: " . $input . "\n";
+	//echo "Expected Output: " . $expected . "\n";
 	
 	$math = new EvalMath;
 	$result = $math->evaluate($input);
 	
-	echo $input . " = " . $expected . " -> ";
+	//echo $input . " = " . $expected . " -> ";
 	if ($result == $expected) {
-		echo "Test Passed.\n";
+		//echo "Test Passed.\n";
+		$status = "Pass";
 	}
 	else {
-		echo "Test Failed.\n";
+		//echo "Test Failed.\n";
+		$status = "Fail";
 	}
+	echo "{" . "evalmath" . ", " . $input . ", " . $expected . ", " . $result . ", " . $status . "}\n";
 }
 
 
