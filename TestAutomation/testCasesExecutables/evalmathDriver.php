@@ -11,7 +11,7 @@
 
 // Requirements
 // Note: Not part of moodle_internal, so no need to load moodle config
-require "../project/moodle/lib/evalmath/evalmath.class.php";
+require "./project/moodle/lib/evalmath/evalmath.class.php";
 
 
 // Input expression and expected output must be passed as command line arguments

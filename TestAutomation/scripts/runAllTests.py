@@ -11,8 +11,8 @@
 
 # TODO: Script and drivers are currently designed to run with the TestAutomation dir in the moodle project's root directory
 
-testDir = "../testCases"
-driverDir = "../testCasesExecutables"
+testDir = "./testCases"
+driverDir = "./testCasesExecutables"
 
 import json
 import os

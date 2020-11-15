@@ -11,7 +11,7 @@
 
 // Requirements
 // Note: Not part of moodle_internal, so no need to load moodle config
-require "../project/moodle/lib/html2text/Html2Text.php";
+require "./project/moodle/lib/html2text/Html2Text.php";
 
 
 // Input expression and expected output must be passed as command line arguments
