@@ -13,7 +13,7 @@ Thes files shoud be in the following format:
 	“component”: “Component Name”,
 	“method”: “Method Name”,
 	“input”: “input”,
-	“output”: “output”
+	“expected”: “expected output”
 }
 
 where the fields are defined as follows:
@@ -25,3 +25,6 @@ where the fields are defined as follows:
 6. test input(s) including command-line argument(s)
 7. expected outcome(s)
 
+## Malformed Test Cases
+
+This directory contains a couple files named malformedx.json, these are malformed testcases that show that the framework is able to handle bad test cases.

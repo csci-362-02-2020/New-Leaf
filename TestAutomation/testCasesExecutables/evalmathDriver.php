@@ -23,25 +23,19 @@ if (!(sizeof($argv) == 3)) {
 
 
 // Method to perform a test
-// Echos: {result, status}
+// Echos: { "output": output, "result": result}
 function test($input, $expected) {
 	//echo "Running evalmath Test \n";
 	//echo "Input: " . $input . "\n";
 	//echo "Expected Output: " . $expected . "\n";
 	
 	$math = new EvalMath;
-	$result = $math->evaluate($input);
+	$output = $math->evaluate($input);
 	
 	//echo $input . " = " . $expected . " -> ";
-	if ($result == $expected) {
-		//echo "Test Passed.\n";
-		$status = "Pass";
-	}
-	else {
-		//echo "Test Failed.\n";
-		$status = "Fail";
-	}
-	echo "{" . $result . ", " . $status . "}\n";
+	$result = $output == $expected;
+	
+	echo "{ \"output\": " . $output . ", \"result\": " . $result . "}\n";
 }
 
 

@@ -5,5 +5,5 @@
 	"component": "html2text",
 	"method": "getText",
 	"input": "PCFET0NUWVBFIGh0bWw+PGh0bWw+PGJvZHk+PGgxPlRoZSBIZWFkaW5nPC9oMT48cD5BIHBhcmFncmFwaC48L3A+PC9ib2R5PjwvaHRtbD4=",
-	"output": "VEhFIEhFQURJTkcKCkEgcGFyYWdyYXBoLgo="
+	"expected": "VEhFIEhFQURJTkcKCkEgcGFyYWdyYXBoLgo="
 }

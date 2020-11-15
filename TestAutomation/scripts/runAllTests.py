@@ -9,177 +9,174 @@
 # 20 October 2020
 #
 
-# TODO: Script and drivers are currently designed to run with the TestAutomation dir in the moodle project's root directory
-
 testDir = "./testCases"
 driverDir = "./testCasesExecutables"
+outDir = "/tmp/newleaf-results.html"
 
+from datetime import datetime
 import json
 import os
 import subprocess
 import webbrowser
 
-# Read testDir
+# html used for building output file
 
-testCaseDefs = []
+headerSource = "./scripts/output_header.html"
+footerSource = "./scripts/output_footer.html"
 
-# Find all .json file names in testDir
-for t in os.scandir(testDir):
-	name = t.name
-	try:
-		split = name.split('.')
-		if len(split) == 2 and split[1] == "json":
-			testCaseDefs.append(name)
-	except:
-		pass
+tableStart = """
+<header><strong>NewLeaf Testing Framework Results</strong></header>
+<p>%s</p> <!-- Date/time of execution -->
 
-# Load testcases
-
-testCases = []
-
-for t in testCaseDefs:
-	path = "%s/%s" % (testDir, t)
-	with open(path, "r") as file: #using with to avoid closing the file
-		testCases.append(json.load(file)) #json.load(file) turns the file into a dictonary
-		
-# Sort testCases by id number testcases[0]['requirement'] => value of requirement
-testCases = sorted(testCases, key=lambda k: k['id']) 
-
-print("Loaded Test Cases")
-#print(testCases)
-
-# Run testCases, parse and compile results
-
-for case in testCases:
-
-	nameOfDriver =  "%s/%s" % (driverDir, case['driver'])
-	testInput = str(case['input'])
-	expectedOutput = str(case['output'])
-	process = ["php", nameOfDriver, testInput, expectedOutput]
-
-	#capture the output
-	capturedOutput = subprocess.run(process, capture_output=True)
-	
-	#add to case dict
-	case['results'] = capturedOutput.stdout.decode("utf-8")
-
-
-	
-# Put results in html, open in web browser
-htmlHead = """
-<head>
-<title>Current Directory</title>
-  <style>
-  
-	body {   
-		background-color: rgb(150, 108, 39);
-	}
-    
-	h1 {
-		display: flex;
-		justify-content: center;
-		color: rgb(255, 200, 53);
-	}
-    
-	.scripts {
-		display: flex;
-		justify-content: center;
-		color: rgb(243, 242, 236);
-	}
-    
-	p {
-		display: flex;
-		text-align: left;
-		justify-content: center;
-	}
-	
-	h2 {
-		display: flex;
-		text-align: left;
-		justify-content: center;
-	}
-    
-    .button
-	{
-		border: none;
-		border-radius: 12px;
-		color: white;
-		padding: 8px 16px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 12px;
-	}
-	.button:hover
-	{
-		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-	}
-	.wrapper
-	{
-		padding-bottom: 10px;
-		text-align: center;
-		justify-content: center;
-	}
-	
-	.container
-	{
-		margin: 30px 5px;
-		border: 2px solid black;
-	}
-	
-	.pass
-	{
-		text-decoration: underline;
-		text-decoration-color: green;
-	}
-	.fail
-	{
-		text-decoration: underline;
-		text-decoration-color: red;
-	}
-    
-  </style>
-</head>
+<table id="results">
+  <tr>
+  	<!-- Columns -->
+    <th onclick="sortTable(0)">id</th>
+    <th onclick="sortTable(1)">component</th>
+    <th onclick="sortTable(2)">method</th>
+    <th onclick="sortTable(3)">input</th>
+    <th onclick="sortTable(4)">expected</th>
+    <th onclick="sortTable(5)">output</th>
+    <th onclick="sortTable(6)">result</th>
+  </tr>
 """
 
-htmlClosing = '''
-</body> 
-</html>'''
+tableRow = """
+<tr>
+    <td>%d</td> <!-- id -->
+    <td>%s</td> <!-- component -->
+    <td>%s</td> <!-- method -->
+    <td>%s</td> <!-- input -->
+    <td>%s</td> <!-- expected -->
+    <td>%s</td> <!-- output -->
+    <td class="%s">%s</td> <!-- class of result (pass/fail), text of result -->
+</tr>
+"""
 
-#create a temp file
-tmpFile = "/tmp/newleaf-runAllTests.html"
+# Required Test Case Fields
+testCaseKeys = ['id', 'driver', 'requirement', 'component', 'method', 'input', 'expected']
+outputKeys = ['id', 'component', 'method', 'input', 'expected', 'output', 'result']
 
-with open(tmpFile, "w+") as file:
-	file.write(htmlHead)
+# Malformed Test Case Exception
+class MalformedTestError(Exception):
+	def __init__(self, file, reason):
+		self.file = file
+		self.reason = reason
+
+
+# Method to load a Test Case File
+def loadTest(name):
+	path = "%s/%s" % (testDir, name)
+	case = None
 	
-	#iterate through each test case
+	# Read Test Case file
+	try:
+		with open(path, "r") as file:
+			case = json.load(file)
+	except json.decoder.JSONDecodeError:
+		raise MalformedTestError(name, "Bad json")
+		
+	# Check if all required keys exist
+	missing = []
+	for k in testCaseKeys:
+		try:
+			case[k]
+		except KeyError:
+			missing.append(k)
+			
+	if len(missing) > 0:
+		raise MalformedTestError(name, "Missing keys %s" % missing)
+		
+	return case
+	
+
+# Method to Execute a Test Case File
+def runTest(name):
+	case = loadTest(name)
+	
+	# Execute the test
+	driver =  "%s/%s" % (driverDir, case['driver'])
+	testInput = str(case['input'])
+	expected = str(case['expected'])
+	
+	if not os.path.exists(driver):
+		raise MalformedTestError(name, "Driver not found (%s)" % driver)
+		
+	try:
+		process = ["php", driver, testInput, expected]
+		driverOut = subprocess.run(process, capture_output=True).stdout.decode("utf-8")
+		driverOut = json.loads(driverOut)
+	except:
+		raise MalformedTestError(name, "Bad driver (%s)" % driver)
+	
+	# Add results to case and return
+	
+	case['output'] = driverOut['output']
+	case['result'] = driverOut['result'] == 1 # true = pass, false = fail
+	
+	return case
+	
+	
+# Run all Tests
+def main():
+	# Initialize output file
+	
+	out = open(outDir, "w+")
+	
+	with open(headerSource, "r") as header:
+		for line in header:
+			out.write(line)
+			
+	out.write(tableStart % datetime.now())
+	
+	# Begin processing and executing test cases 1 by one
+	
+	# Locate test case files
+	testCases = []
+	
+	for t in os.scandir(testDir):
+		name = t.name
+		if len(name) > 5 and name[-5:] == ".json":
+			testCases.append(name)
+	
+	skipped = 0
 	for case in testCases:
-		result = case['results']
-		file.write("<div class='container'>")
-		#split each result into array
-		resultAry = result[1:-2].split(", ")
-		file.write("<h2>Test Case: %d   |   %s->%s</h2>" % (case['id'], case['component'], case['method'])) # class name
-		file.write("<p>Input: %s</p>" % case['input']) # Input
-		file.write("<p>Expected Output: %s</p>" % case['output']) # expected output
-		file.write('<p class="%s">Result: %s -> %s</p>' % (resultAry[1].lower(), resultAry[0], resultAry[1])) # actual output/test passed or failed
-		file.write("</div>")
-	file.write(htmlClosing)
+		result = None
+		try:
+			result = runTest(case)
+		except MalformedTestError as e:
+			skipped += 1
+			print("Skipping malformed test case: %s (%s)" % (e.reason, e.file))
+			continue
+			
+		out.write("<tr>\n")
+		for k in outputKeys:
+			if k != "result":
+				out.write("<td>"+str(result[k])+"</td>\n")
+			else:
+				s = "Fail"
+				if result[k]:
+					s = "Pass"
+				out.write("<td class=\"%s\">%s</td>\n" % (s.lower(), s))
+				
+		out.write("</tr>\n")
+		
+	# Finalize output file and display results
 	
-webbrowser.open(tmpFile)
+	out.write("</table>\n")
+	
+	if skipped > 0:
+		warning = "<p style=\"color: red\">Warning: %d test cases skipped due to errors, see stdout for more information.</p>\n" % skipped
+		out.write(warning)
+		
+	with open(footerSource, "r") as footer:
+		for line in footer:
+			out.write(line)
+			
+	out.close()
+	webbrowser.open(outDir)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == "__main__":
+	main()

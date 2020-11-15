@@ -5,6 +5,6 @@
 	"component": "evalmath",
 	"method": "evaluate",
 	"input": "100>10",
-	"output": 1
+	"expected": 1
 }
 

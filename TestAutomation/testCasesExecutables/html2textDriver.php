@@ -23,25 +23,19 @@ if (!(sizeof($argv) == 3)) {
 
 
 // Method to perform a test
-// Echos: {result, status}
+// Echos: { "output": output, "result": result}
 function test($input, $expected) {
 	//echo "Running Html2Text Test \n";
 	//echo "Input: " . $input . "\n";
 	//echo "Expected Output: " . $expected . "\n";
 	
 	$html = new Html2Text\Html2Text(base64_decode($input));
-	$result = base64_encode($html->getText());
-	//echo "Result: " . $result;
+	$output = base64_encode($html->getText());
+	//echo "Result: " . $output;
 	//echo $input . " = " . $expected . " -> ";
-	if ($result == $expected) {
-		//echo "Test Passed.\n";
-		$status = "Pass";
-	}
-	else {
-		//cho "Test Failed.\n";
-		$status = "Fail";
-	}
-	echo "{" . $result . ", " . $status . "}\n";
+	$result = $output == $expected;
+	
+	echo "{ \"output\": \"" . $output . "\", \"result\": " . $result . "}\n";
 }
 
 
