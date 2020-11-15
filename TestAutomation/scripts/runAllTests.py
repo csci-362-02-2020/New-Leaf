@@ -41,18 +41,6 @@ tableStart = """
   </tr>
 """
 
-tableRow = """
-<tr>
-    <td>%d</td> <!-- id -->
-    <td>%s</td> <!-- component -->
-    <td>%s</td> <!-- method -->
-    <td>%s</td> <!-- input -->
-    <td>%s</td> <!-- expected -->
-    <td>%s</td> <!-- output -->
-    <td class="%s">%s</td> <!-- class of result (pass/fail), text of result -->
-</tr>
-"""
-
 # Required Test Case Fields
 testCaseKeys = ['id', 'driver', 'requirement', 'component', 'method', 'input', 'expected']
 outputKeys = ['id', 'component', 'method', 'input', 'expected', 'output', 'result']
