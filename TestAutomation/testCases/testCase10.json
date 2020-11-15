@@ -1,0 +1,9 @@
+{ 
+	"id": 10,
+	"driver": "evalmathDriver2.php",
+	"requirement": "basic equality operator functionality",
+	"component": "evalmath",
+	"method": "e",
+	"input": "7+7",
+	"expected": 14
+}
