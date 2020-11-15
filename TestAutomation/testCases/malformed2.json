@@ -1,7 +1,7 @@
 { 
 	"id": -2,
 	"malformed": "Bad driver field",
-	"driver": "nonexistantDriver.php",
+	"driver": "nonexistentDriver.php",
 	"requirement": "none",
 	"component": "none",
 	"method": "none",
