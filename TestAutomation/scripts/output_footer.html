@@ -20,16 +20,25 @@ function sortTable(n) {
 			x = rows[i].getElementsByTagName("TD")[n];
 			y = rows[i + 1].getElementsByTagName("TD")[n];
 			
-			//check to see if both values can be changed to a number
+			xInnerHTML = x.innerHTML.toLowerCase();
+			yInnerHTML = y.innerHTML.toLowerCase();
+			
+			// if we are in column 0 change comparable types to int
+			if (n == 0){
+				xInnerHTML = x.firstChild.innerHTML;
+				xInnerHTML = parseInt(xInnerHTML);
+				yInnerHTML = y.firstChild.innerHTML;
+				yInnerHTML = parseInt(yInnerHTML);
+			}
 			
 			if (dir == "asc") {
-				if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+				if (xInnerHTML > yInnerHTML) {
 					shouldSwitch= true;
 					break;
 				}
 			}
 			else if (dir == "desc") {
-				if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+				if (xInnerHTML < yInnerHTML) {
 					shouldSwitch = true;
 					break;
 				}
