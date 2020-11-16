@@ -91,7 +91,7 @@ def runTest(name):
 		raise MalformedTestError(name, "Driver not found (%s)" % driver)
 		
 	try:
-		process = ["php", driver, testInput, expected]
+		process = ["php", driver, testInput]
 		driverOut = subprocess.run(process, capture_output=True).stdout.decode("utf-8")
 		driverOut = json.loads(driverOut)
 	except:
@@ -100,7 +100,7 @@ def runTest(name):
 	# Add results to case and return
 	
 	case['output'] = driverOut['output']
-	case['result'] = driverOut['result'] == 1 # true = pass, false = fail
+	case['result'] = driverOut['output'] == case['expected'] # true = pass, false = fail
 	
 	return case
 	

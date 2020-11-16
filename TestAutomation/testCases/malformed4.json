@@ -1,0 +1,10 @@
+{ 
+	"id": -4,
+	"malformed": "Bad output",
+	"driver": "evalmathDriver.php",
+	"requirement": "basic addition functionality",
+	"component": "evalmath",
+	"method": "evaluate",
+	"input": "4+5",
+	"expected": -4
+} 

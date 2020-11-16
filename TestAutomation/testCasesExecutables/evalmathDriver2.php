@@ -16,32 +16,27 @@ require "./project/moodle/lib/evalmath/evalmath.class.php";
 
 // Input expression and expected output must be passed as command line arguments
 // Warning: Input must not include spaces, if spaces are required this must be rewritten
-if (!(sizeof($argv) == 3)) { 
+if (!(sizeof($argv) == 2)) { 
 	echo "Error: evalmathDriver requires sizeof(\$argv) == 3 \n";	
 	return -1; 
 }
 
 
 // Method to perform a test
-// Echos: { "output": output, "result": result}
-function test($input, $expected) {
+// Echos: { "output": output }
+function test($input) {
 	//echo "Running evalmath Test \n";
 	//echo "Input: " . $input . "\n";
-	//echo "Expected Output: " . $expected . "\n";
 	
 	$math = new EvalMath;
 	$output = $math->e($input);
 	
-	//echo $input . " = " . $expected . " -> ";
-	$result = $output == $expected;
-	
-	echo "{ \"output\": " . $output . ", \"result\": " . $result . "}\n";
+	echo "{ \"output\": " . $output . " }";
 }
 
 
 // Run the test with command line input
 $in = $argv[1];
-$expected = (int) $argv[2];
 
-test($in, $expected);
+test($in);
 
