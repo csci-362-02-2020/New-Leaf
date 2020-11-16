@@ -91,16 +91,24 @@ def runTest(name):
 		raise MalformedTestError(name, "Driver not found (%s)" % driver)
 		
 	try:
-		process = ["php", driver, testInput]
-		driverOut = subprocess.run(process, capture_output=True).stdout.decode("utf-8")
-		driverOut = json.loads(driverOut)
-	except:
+		args = ["php", driver, testInput]
+		process = subprocess.run(args, capture_output=True)
+		result = process.stdout.decode("utf-8")
+		error = process.stderr.decode("utf-8")
+		if len(error) > 0:
+			case['output'] = error
+			case['result'] = False # true = pass, false = fail
+		else:
+			result = json.loads(result)
+			case['output'] = result['output']
+			case['result'] = result['output'] == case['expected'] # true = pass, false = fail
+			
+	except Exception as e:
 		raise MalformedTestError(name, "Bad driver (%s)" % driver)
 	
 	# Add results to case and return
 	
-	case['output'] = driverOut['output']
-	case['result'] = driverOut['output'] == case['expected'] # true = pass, false = fail
+	
 	
 	return case
 	
@@ -140,7 +148,11 @@ def main():
 		out.write("<tr>\n")
 		for k in outputKeys:
 			if k != "result":
-				out.write("<td>"+str(result[k])+"</td>\n")
+				s = str(result[k])
+				c = ""
+				if len(s) > 15:
+					c = "scroll"
+				out.write("<td><div class=\"%s\">%s</div></td>\n" % (c, s))
 			else:
 				s = "Fail"
 				if result[k]:
