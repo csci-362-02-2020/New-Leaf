@@ -106,10 +106,7 @@ def runTest(name):
 	except Exception as e:
 		raise MalformedTestError(name, "Bad driver (%s)" % driver)
 	
-	# Add results to case and return
-	
-	
-	
+
 	return case
 	
 	
@@ -135,6 +132,7 @@ def main():
 		if len(name) > 5 and name[-5:] == ".json":
 			testCases.append(name)
 	
+	# Run tests
 	skipped = 0
 	for case in testCases:
 		result = None
@@ -145,6 +143,7 @@ def main():
 			print("Skipping malformed test case: %s (%s)" % (e.reason, e.file))
 			continue
 			
+		# Write results to output file
 		out.write("<tr>\n")
 		for k in outputKeys:
 			if k != "result":
