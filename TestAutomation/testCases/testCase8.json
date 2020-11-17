@@ -1,0 +1,9 @@
+{ 
+	"id": 8,
+	"driver": "html2textDriver.php",
+	"requirement": "extract text from html with linebreak",
+	"component": "html2text",
+	"method": "getText",
+	"input": "PHA+cGFyYWdyYXBoIDxicj4gbmV3bGluZTwvcD4=",
+	"expected": "cGFyYWdyYXBoIApuZXdsaW5lCg=="
+}

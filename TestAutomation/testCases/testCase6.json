@@ -1,7 +1,7 @@
 { 
 	"id": 6,
 	"driver": "html2textDriver.php",
-	"requirement": "extract text from html header, paragraph",
+	"requirement": "extract text from html with multiple nested tags",
 	"component": "html2text",
 	"method": "getText",
 	"input": "PCFET0NUWVBFIGh0bWw+PGh0bWw+PGJvZHk+PGgxPlRoZSBIZWFkaW5nPC9oMT48cD5BIHBhcmFncmFwaC48L3A+PC9ib2R5PjwvaHRtbD4=",

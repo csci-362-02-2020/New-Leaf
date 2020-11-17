@@ -1,0 +1,9 @@
+{ 
+	"id": 7,
+	"driver": "html2textDriver.php",
+	"requirement": "extract text from html <p> element",
+	"component": "html2text",
+	"method": "getText",
+	"input": "PHA+cGFyYWdyYXBoPC9wPg==",
+	"expected": "cGFyYWdyYXBoCg=="
+}

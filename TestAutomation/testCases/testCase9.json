@@ -1,0 +1,9 @@
+{ 
+	"id": 9,
+	"driver": "html2textDriver.php",
+	"requirement": "extract text from html with multiple tags",
+	"component": "html2text",
+	"method": "getText",
+	"input": "PGgxPmhlYWRpbmcxPC9oMT4KPGgyPmhlYWRpbmcyPC9oMj4=",
+	"expected": "SEVBRElORzEKCkhFQURJTkcyCgo="
+}
