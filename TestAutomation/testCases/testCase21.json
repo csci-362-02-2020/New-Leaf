@@ -1,0 +1,9 @@
+{ 
+	"id": 21,
+	"driver": "mod.php",
+	"requirement": "basic equality operator functionality",
+	"component": "evalMath",
+	"method": "mod",
+	"input": "7,7",
+	"expected": 0
+}

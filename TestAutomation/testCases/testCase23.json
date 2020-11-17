@@ -1,0 +1,9 @@
+{ 
+	"id": 23,
+	"driver": "mod.php",
+	"requirement": "basic mod",
+	"component": "evalmath",
+	"method": "mod",
+	"input": "100,50",
+	"expected": 0
+}
