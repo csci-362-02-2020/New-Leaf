@@ -1,9 +1,9 @@
 { 
 	"id": 11,
-	"driver": "evalmathDriver2.php",
-	"requirement": "basic subtraction functionality",
-	"component": "evalmath",
-	"method": "e",
-	"input": "4-6",
-	"expected": -2
+	"driver": "maxmind_GeoIp2_Util_cidr.driver.php",
+	"requirement": "convert ip/prefix to cidr notation",
+	"component": "maxmind_GeoIp2_Util",
+	"method": "cidr",
+	"input": "1.2.3.4/16",
+	"expected": "1.2.0.0/16"
 }

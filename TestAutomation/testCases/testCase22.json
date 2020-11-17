@@ -1,6 +1,6 @@
 { 
 	"id": 22,
-	"driver": "mod.php",
+	"driver": "evalmath_mod.driver.php",
 	"requirement": "basic mod",
 	"component": "evalmath",
 	"method": "mod",

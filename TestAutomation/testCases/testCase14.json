@@ -1,9 +1,9 @@
 { 
 	"id": 14,
-	"driver": "evalmathDriver2.php",
-	"requirement": "basic equality operator functionality",
-	"component": "evalmath",
-	"method": "e",
-	"input": "9>8",
-	"expected": 1
+	"driver": "maxmind_GeoIp2_Util_cidr.driver.php",
+	"requirement": "convert ip/prefix to cidr notation",
+	"component": "maxmind_GeoIp2_Util",
+	"method": "cidr",
+	"input": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff/16",
+	"expected": "ffff::/16"
 }
