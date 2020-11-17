@@ -1,6 +1,6 @@
 { 
 	"id": 8,
-	"driver": "html2textDriver.php",
+	"driver": "html2text_getText.driver.php",
 	"requirement": "extract text from html with linebreak",
 	"component": "html2text",
 	"method": "getText",

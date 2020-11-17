@@ -1,6 +1,6 @@
 { 
 	"id": 10,
-	"driver": "html2textDriver.php",
+	"driver": "html2text_getText.driver.php",
 	"requirement": "extract text from html with nested tag",
 	"component": "html2text",
 	"method": "getText",

@@ -1,6 +1,6 @@
 { 
 	"id": 1,
-	"driver": "evalmathDriver.php",
+	"driver": "evalmath_evaluate.driver.php",
 	"requirement": "basic addition functionality",
 	"component": "evalmath",
 	"method": "evaluate",

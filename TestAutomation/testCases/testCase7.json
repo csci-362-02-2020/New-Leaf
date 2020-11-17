@@ -1,6 +1,6 @@
 { 
 	"id": 7,
-	"driver": "html2textDriver.php",
+	"driver": "html2text_getText.driver.php",
 	"requirement": "extract text from html <p> element",
 	"component": "html2text",
 	"method": "getText",

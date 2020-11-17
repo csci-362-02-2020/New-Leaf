@@ -1,7 +1,7 @@
 <?php
 
 //
-// html2textDriver.php
+// html2text_getText.driver.php
 //
 // lukem1
 // Newleaf

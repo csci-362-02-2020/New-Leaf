@@ -1,0 +1,9 @@
+{ 
+	"id": 16,
+	"driver": "htmlpurifier_UnitConverter_getSigFigs.driver.php",
+	"requirement": "calculation of significant figures in decimal strings",
+	"component": "htmlpurifier_UnitConverter",
+	"method": "getSigFigs",
+	"input": "0001.0123",
+	"expected": "5"
+}

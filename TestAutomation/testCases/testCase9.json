@@ -1,6 +1,6 @@
 { 
 	"id": 9,
-	"driver": "html2textDriver.php",
+	"driver": "html2text_getText.driver.php",
 	"requirement": "extract text from html with multiple tags",
 	"component": "html2text",
 	"method": "getText",

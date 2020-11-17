@@ -1,6 +1,6 @@
 { 
 	"id": 5,
-	"driver": "evalmathDriver.php",
+	"driver": "evalmath_evaluate.driver.php",
 	"requirement": "basic equality operator functionality",
 	"component": "evalmath",
 	"method": "evaluate",
