@@ -140,10 +140,13 @@ def main():
 	
 	# Run tests
 	skipped = 0
+	run = 0
+	failed = 0
 	for case in testCases:
 		result = None
 		try:
 			result = runTest(case)
+			run += 1
 		except MalformedTestError as e:
 			skipped += 1
 			print("Skipping malformed test case: %s (%s)" % (e.reason, e.file))
@@ -159,9 +162,10 @@ def main():
 					c = "scroll"
 				out.write("<td><div class=\"%s\">%s</div></td>\n" % (c, s))
 			else:
-				s = "Fail"
-				if result[k]:
-					s = "Pass"
+				s = "Pass"
+				if not result[k]:
+					s = "Fail"
+					failed += 1
 				out.write("<td class=\"%s\">%s</td>\n" % (s.lower(), s))
 				
 		out.write("</tr>\n")
@@ -169,6 +173,13 @@ def main():
 	# Finalize output file and display results
 	
 	out.write("</table>\n")
+	
+	color = "black"
+	if failed > 0:
+		color = "red"
+		
+	summary = "<p style=\"color: %s\">Summary: %d / %d tests passed.</p>\n" % (color, run-failed, run)
+	out.write(summary)
 	
 	if skipped > 0:
 		warning = "<p style=\"color: red\">Warning: %d test cases skipped due to errors, see stdout for more information.</p>\n" % skipped
