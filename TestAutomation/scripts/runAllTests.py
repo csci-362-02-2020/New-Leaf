@@ -27,7 +27,7 @@ footerSource = "./scripts/Output_Templates/output_footer.html"
 tableStart = """
 <header><strong>NewLeaf Testing Framework Results</strong></header>
 <p>%s</p> <!-- Date/time of execution -->
-
+<div>Hover over fields to see requirements and click column headers to sort!</div>
 <table id="results">
   <tr>
   	<!-- Columns -->

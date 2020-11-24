@@ -2,7 +2,7 @@
 	"id": -4,
 	"malformed": "Bad output",
 	"driver": "evalmath_evaluate.driver.php",
-	"requirement": "basic addition functionality",
+	"requirement": "malformed test case, should fail",
 	"component": "evalmath",
 	"method": "evaluate",
 	"input": "4+5",
