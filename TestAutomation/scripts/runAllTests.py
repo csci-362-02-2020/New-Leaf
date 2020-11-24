@@ -21,8 +21,8 @@ import webbrowser
 
 # html used for building output file
 
-headerSource = "./scripts/output_header.html"
-footerSource = "./scripts/output_footer.html"
+headerSource = "./scripts/Output_Templates/output_header.html"
+footerSource = "./scripts/Output_Templates/output_footer.html"
 
 tableStart = """
 <header><strong>NewLeaf Testing Framework Results</strong></header>
@@ -112,6 +112,12 @@ def runTest(name):
 	
 # Run all Tests
 def main():
+	# Check that ./project/moodle exists
+	if not os.path.isdir("./project/moodle"):
+		print("./project/moodle Does Not Exist!")
+		print("To clone moodle run: ./scripts/moodleMod.sh clone")
+		exit(-1)
+		
 	# Initialize output file
 	
 	out = open(outDir, "w+")
