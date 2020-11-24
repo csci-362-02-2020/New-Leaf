@@ -57,7 +57,7 @@ then
 			for f in $faults/fault*.php
 			do
 				read -r dst < $f
-				dst=${dst/"#Destination: "}
+				dst=${dst/"<?php #Destination: "}
 				dst=${path}/${dst}
 				echo "Injecting fault $f at $dst."
 				cp $f $dst
@@ -69,13 +69,11 @@ then
 	then
 		if [[ -d "$path" ]]
 		then
-			for f in $faults/fault*.php
-			do
-				cd $path
-				git reset
-				git clean -f
-				echo "Done."
-			done
+			cd $path
+			git restore .
+			git reset
+			git clean -f
+			echo "Done."
 		else
 			echo "Error: $path does not exist!"
 		fi
