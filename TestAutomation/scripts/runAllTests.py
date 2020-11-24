@@ -150,7 +150,7 @@ def main():
 			continue
 			
 		# Write results to output file
-		out.write("<tr>\n")
+		out.write('<tr title="Requirement: %s">\n' % (result['requirement']))
 		for k in outputKeys:
 			if k != "result":
 				s = str(result[k])
