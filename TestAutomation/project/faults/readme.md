@@ -30,7 +30,7 @@ As with all other scripts, the moodleMod method should be executed from ../TestA
 
 ../moodle/lib/html2text/Html2Text.php
 
-Line 144 changed so that the class improperly handles html with <br> elements.
+Line 144 changed so that the class improperly handles html with \<br\> elements.
 
 `'/<(br)[^>]*>[ ]*/i',` to `'/<(brk)[^>]*>[ ]*/i',`
 
@@ -61,6 +61,8 @@ Line 194 changed so that negative numbers are improperly handled.
 This fault causes the test case with the following id to fail: 19
 
 ### fault4-5.php
+
+./moodle/lib/evalmath/evalmath.class.php
 
 #### 4
 
