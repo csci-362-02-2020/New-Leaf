@@ -80,7 +80,7 @@ This fault causes the test case with the following id to fail: 2
 
 Line 586 changed so that mod is calculated incorrectly.
 
-'return $op1 % $op2;' to `return $op2 % $op1;`
+`return $op1 % $op2;` to `return $op2 % $op1;`
 
 This fault causes the test cases with the following ids to fail: 22, 23, 24
 
