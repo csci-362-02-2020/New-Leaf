@@ -6,6 +6,7 @@ Test cases should be json files with the name testCasex.json where x is the test
 
 Thes files shoud be in the following format:
 
+```
 { 
 
 	“id”: x,
@@ -23,6 +24,7 @@ Thes files shoud be in the following format:
 	“expected”: “expected output”
 	
 }
+```
 
 where the fields are defined as follows:
 1. test number or ID
