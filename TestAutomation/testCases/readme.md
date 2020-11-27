@@ -6,15 +6,25 @@ Test cases should be json files with the name testCasex.json where x is the test
 
 Thes files shoud be in the following format:
 
+```
 { 
+
 	“id”: x,
+	
 	"driver": "testCasex.php",
+	
 	“requirement”: “Requirement”,
+	
 	“component”: “Component Name”,
+	
 	“method”: “Method Name”,
+	
 	“input”: “input”,
+	
 	“expected”: “expected output”
+	
 }
+```
 
 where the fields are defined as follows:
 1. test number or ID
