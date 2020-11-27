@@ -1,2 +1,4 @@
 # Ignore moodle source code
 TestAutomation/project/moodle
+# Ignore generated reports
+TestAutomation/reports/*.html

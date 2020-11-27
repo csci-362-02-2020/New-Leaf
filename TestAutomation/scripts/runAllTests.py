@@ -11,7 +11,7 @@
 
 testDir = "./testCases"
 driverDir = "./testCasesExecutables"
-outDir = "/tmp/newleaf-results.html"
+outDir = "./reports/testReport.html"
 
 from datetime import datetime
 import json
