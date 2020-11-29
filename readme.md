@@ -20,7 +20,7 @@
 
 To revert these changes run: `./scripts/moodleMod.sh reset`
 
-4. Run the tests!
+4. Run the tests! It is expected to see errors due to the three intentionally wrong test cases.
 
 `./scripts/runAllTests.py`
 
