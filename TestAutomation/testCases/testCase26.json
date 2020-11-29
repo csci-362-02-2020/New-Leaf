@@ -1,0 +1,9 @@
+{ 
+	"id": 26,
+	"driver": "evalmath_ifthenelse.driver.php",
+	"requirement": "evaluating if and returning then or else",
+	"component": "evalmath",
+	"method": "ifthenelse",
+	"input": "true,3,4",
+	"expected": 3
+}
