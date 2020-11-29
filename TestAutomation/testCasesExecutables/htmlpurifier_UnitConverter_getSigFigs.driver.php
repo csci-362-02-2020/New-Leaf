@@ -10,13 +10,12 @@
 
 
 // Requirements
-// Note: Not part of moodle_internal, so no need to load moodle config
 require "./project/moodle/lib/htmlpurifier/HTMLPurifier/UnitConverter.php";
 
 
-// Input expression must be passed as a command line argument
+// Input must be passed as arguments
 if (!(sizeof($argv) == 2)) { 
-	echo "Error: Expected args: [input] \n";	
+	echo "Error: Driver expected 1 argument and recieved " . (sizeof($argv)-1) . ".\n";	
 	return -1; 
 }
 
@@ -24,7 +23,6 @@ if (!(sizeof($argv) == 2)) {
 // Method to perform a test
 // Echos: { "output": output }
 function test($input) {
-	//echo "Running Html2Text Test \n";
 	//echo "Input: " . $input . "\n";
 	
 	$converter = new HTMLPurifier_UnitConverter();
@@ -34,7 +32,8 @@ function test($input) {
 }
 
 
-// Run the test with command line input
+// Run the test with input from argv
+
 $in = $argv[1];
 
 test($in);

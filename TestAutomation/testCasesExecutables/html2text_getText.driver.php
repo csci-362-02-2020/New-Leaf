@@ -10,11 +10,10 @@
 
 
 // Requirements
-// Note: Not part of moodle_internal, so no need to load moodle config
 require "./project/moodle/lib/html2text/Html2Text.php";
 
 
-// Input expression and expected output must be passed as command line arguments
+// Input must be passed as arguments
 // Warning: Input must not include spaces, in this case the html must be encoded as base64
 if (!(sizeof($argv) == 2)) { 
 	echo "Error: html2textDriver requires sizeof(\$argv) == 2 \n";	
@@ -25,7 +24,6 @@ if (!(sizeof($argv) == 2)) {
 // Method to perform a test
 // Echos: { "output": output }
 function test($input) {
-	//echo "Running Html2Text Test \n";
 	//echo "Input: " . $input . "\n";
 	
 	$html = new Html2Text\Html2Text(base64_decode($input));
@@ -35,7 +33,8 @@ function test($input) {
 }
 
 
-// Run the test with command line input
+// Run the test with input from argv
+
 $in = $argv[1];
 
 test($in);

@@ -3,7 +3,7 @@
 //
 // evalmathDriver.php
 //
-// lukem1
+// lukem1, chris-m-taylor
 // Newleaf
 // 19 October 2020
 //
@@ -14,10 +14,9 @@
 require "./project/moodle/lib/evalmath/evalmath.class.php";
 
 
-// Input expression and expected output must be passed as command line arguments
-// Warning: Input must not include spaces, if spaces are required this must be rewritten
+// Input must be passed as arguments
 if (!(sizeof($argv) == 2)) { 
-	echo "Error: evalmathDriver requires sizeof(\$argv) == 2 \n";	
+	echo "Error: Driver expected 1 argument and recieved " . (sizeof($argv)-1) . ".\n";		
 	return -1; 
 }
 
@@ -25,7 +24,6 @@ if (!(sizeof($argv) == 2)) {
 // Method to perform a test
 // Echos: { "output": output}
 function test($input) {
-	//echo "Running evalmath Test \n";
 	//echo "Input: " . $input . "\n";
 	
 	$math = new EvalMath;
@@ -36,6 +34,7 @@ function test($input) {
 
 
 // Run the test with command line input
+
 $in = $argv[1];
 
 test($in);

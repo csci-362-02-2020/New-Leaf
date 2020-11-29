@@ -5,7 +5,7 @@
 # scripts
 #
 # New-Leaf
-# lukem1, chris-m-taylor, cafeheart
+# lukem1, chris-m-taylor
 # 20 October 2020
 #
 
