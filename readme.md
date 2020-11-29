@@ -2,9 +2,11 @@
 
 ## Quickstart
 
-1. Clone this repository and change directory into TestAutomation
+1. Clone this repository and change directory into the created repository and then TestAutomation
 
 `git clone https://github.com/csci-362-02-2020/New-Leaf`
+
+`cd New-Leaf`
 
 `cd TestAutomation`
 
