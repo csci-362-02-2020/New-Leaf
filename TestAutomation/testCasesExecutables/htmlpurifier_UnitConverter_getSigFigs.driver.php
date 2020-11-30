@@ -1,7 +1,7 @@
 <?php
 
 //
-// htmlpurifier_UnitConverter.driver.php
+// htmlpurifier_UnitConverter_getSigFigs.driver.php
 //
 // lukem1
 // Newleaf
@@ -13,7 +13,7 @@
 require "./project/moodle/lib/htmlpurifier/HTMLPurifier/UnitConverter.php";
 
 
-// Input must be passed as arguments
+// Input must be passed as an argument
 if (!(sizeof($argv) == 2)) { 
 	echo "Error: Driver expected 1 argument and recieved " . (sizeof($argv)-1) . ".\n";	
 	return -1; 

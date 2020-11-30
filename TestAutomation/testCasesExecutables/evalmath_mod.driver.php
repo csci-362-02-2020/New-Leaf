@@ -1,7 +1,7 @@
 <?php
 
 //
-// evalmathDriver.php
+// evalmath_mod.driver.php
 //
 // chris-m-taylor
 // Newleaf
@@ -13,7 +13,7 @@
 require "./project/moodle/lib/evalmath/evalmath.class.php";
 
 
-// Input must be passed as arguments
+// Input must be passed as an argument
 if (!(sizeof($argv) == 2)) { 
 	echo "Error: Driver expected 1 argument and recieved " . (sizeof($argv)-1) . ".\n";	
 	return -1; 

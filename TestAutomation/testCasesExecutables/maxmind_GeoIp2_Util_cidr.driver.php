@@ -13,7 +13,7 @@
 require "./project/moodle/lib/maxmind/GeoIp2/Util.php";
 
 
-// Input must be passed as arguments
+// Input must be passed as an argument
 if (!(sizeof($argv) == 2)) { 
 	echo "Error: Driver expected 1 argument and recieved " . (sizeof($argv)-1) . ".\n";	
 	return -1; 

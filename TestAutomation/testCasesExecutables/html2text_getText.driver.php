@@ -13,10 +13,10 @@
 require "./project/moodle/lib/html2text/Html2Text.php";
 
 
-// Input must be passed as arguments
-// Warning: Input must not include spaces, in this case the html must be encoded as base64
+// Input must be passed as an argument
+// Note: For this driver input/output is encoded in base64
 if (!(sizeof($argv) == 2)) { 
-	echo "Error: html2textDriver requires sizeof(\$argv) == 2 \n";	
+	echo "Error: Driver expected 1 argument and recieved " . (sizeof($argv)-1) . ".\n";	
 	return -1; 
 }
 
