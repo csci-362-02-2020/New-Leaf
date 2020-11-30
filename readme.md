@@ -2,13 +2,11 @@
 
 ## Quickstart
 
-1. Clone this repository and change directory into the created repository and then TestAutomation
+1. Clone this repository and change directory into TestAutomation
 
 `git clone https://github.com/csci-362-02-2020/New-Leaf`
 
-`cd New-Leaf`
-
-`cd TestAutomation`
+`cd New-Leaf/TestAutomation`
 
 2. Use the moodleMod script to clone the moodle project into ./TestAutomation/project/moodle/
 
@@ -20,9 +18,11 @@
 
 To revert these changes run: `./scripts/moodleMod.sh reset`
 
-4. Run the tests! It is expected to see errors due to the three intentionally wrong test cases.
+4. Run the tests!
 
 `./scripts/runAllTests.py`
+
+At completion the results will be displayed in the default browser. If no faults have been injected all tests should pass. Note that there are 3 intentionally malformed test cases that were used to test error handing that will generate warnings.
 
 ## Navigating this Project
 
