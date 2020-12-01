@@ -2,6 +2,10 @@
 
 ## Quickstart
 
+0. Install PHP
+
+`sudo apt install php7.4-pspell php7.4-curl php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-ldap php7.4-zip php7.4-soap php7.4-mbstring php7.4-cli`
+
 1. Clone this repository and change directory into TestAutomation
 
 `git clone https://github.com/csci-362-02-2020/New-Leaf`
